@@ -1,6 +1,0 @@
-{
-  "appId": "com.burgerhouse.app",
-  "appName": "Burger House",
-  "webDir": "dist",
-  "android": { "allowMixedContent": true }
-}
