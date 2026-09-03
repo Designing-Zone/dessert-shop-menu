@@ -1,0 +1,122 @@
+/* ============================================================
+   Dessert Shop — design tokens
+   Clean editorial system: neutral monochrome ground with
+   a single sage-green accent. Light + dark themes, one source
+   of truth for the public site and the dashboard.
+   ============================================================ */
+
+:root {
+  color-scheme: light;
+
+  /* color — light */
+  --paper: #f7f7f6;          /* page background */
+  --paper-deep: #eeeeed;     /* section bands, placeholders */
+  --surface: #ffffff;        /* raised surfaces */
+  --ink: #1c1c1e;            /* primary text */
+  --ink-soft: #5b5b5e;       /* secondary text */
+  --ink-faint: #909093;      /* tertiary text */
+  --accent: #6b8f71;         /* accent — sage green */
+  --accent-deep: #537458;
+  --accent-soft: #e4f0e6;    /* accent tint */
+  --danger: #c42f2a;         /* warnings, sold-out tone */
+  --danger-soft: #f9e1de;
+  --ok: #2e7d4f;             /* success */
+  --ok-soft: #e1f0e7;
+  --line: #e7e7e5;           /* hairlines */
+  --line-strong: #d0d0cd;
+  --on-ink: #ffffff;         /* text on ink surfaces */
+
+  /* sidebar (dashboard) — light */
+  --side-bg: #161616;
+  --side-text: #c9c9c6;
+  --side-text-faint: #8f8f8c;
+  --side-border: rgba(255, 255, 255, 0.12);
+  --side-hi: #f5f5f3;
+
+  /* typography */
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "Figtree", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  /* shape */
+  --radius: 8px;
+  --radius-sm: 6px;
+
+  /* depth (restrained, neutral) */
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-2: 0 16px 40px -18px rgba(0, 0, 0, 0.30);
+
+  /* layout */
+  --container: 1160px;
+  --header-h: 64px;
+
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* Follow the OS preference unless the user picked explicitly. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+
+    --paper: #131315;
+    --paper-deep: #19191c;
+    --surface: #1e1e21;
+    --ink: #f0f0ef;
+    --ink-soft: #b0b0b2;
+    --ink-faint: #838386;
+    --accent: #9bc4a0;
+    --accent-deep: #7dc498;
+    --accent-soft: #1e2e22;
+    --danger: #e0605a;
+    --danger-soft: #3a2422;
+    --ok: #6fc089;
+    --ok-soft: #1d2e24;
+    --line: #2b2b2e;
+    --line-strong: #3b3b3f;
+    --on-ink: #141416;
+
+    --side-bg: #0d0d0e;
+    --side-text: #bcbcbb;
+    --side-text-faint: #7f7f7d;
+    --side-border: rgba(255, 255, 255, 0.10);
+    --side-hi: #ffffff;
+
+    --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.40);
+    --shadow-2: 0 18px 44px -14px rgba(0, 0, 0, 0.55);
+  }
+}
+
+/* Explicit user choices always win. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --paper: #131315;
+  --paper-deep: #19191c;
+  --surface: #1e1e21;
+  --ink: #f0f0ef;
+  --ink-soft: #b0b0b2;
+  --ink-faint: #838386;
+  --accent: #9bc4a0;
+  --accent-deep: #7dc498;
+  --accent-soft: #1e2e22;
+  --danger: #e0605a;
+  --danger-soft: #3a2422;
+  --ok: #6fc089;
+  --ok-soft: #1d2e24;
+  --line: #2b2b2e;
+  --line-strong: #3b3b3f;
+  --on-ink: #141416;
+
+  --side-bg: #0d0d0e;
+  --side-text: #bcbcbb;
+  --side-text-faint: #7f7f7d;
+  --side-border: rgba(255, 255, 255, 0.10);
+  --side-hi: #ffffff;
+
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.40);
+  --shadow-2: 0 18px 44px -14px rgba(0, 0, 0, 0.55);
+}
+
+html[lang="ar"] {
+  --font-display: "El Messiri", "Fraunces", Georgia, serif;
+  --font-body: "Almarai", "Figtree", system-ui, -apple-system, sans-serif;
+}

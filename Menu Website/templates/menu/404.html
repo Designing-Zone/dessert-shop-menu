@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}Dessert Shop — {% trans "Page not found" %}{% endblock %}
+
+{% block content %}
+<div class="container error-wrap">
+  <p class="error-code" aria-hidden="true">404</p>
+  <h1>{% trans "This page is out of the oven." %}</h1>
+  <p class="error-text">{% trans "The page you're looking for doesn't exist — but the menu certainly does." %}</p>
+  <a class="btn btn-solid" href="{% url 'menu:menu' %}">{% trans "Back to the menu" %}</a>
+</div>
+{% endblock %}

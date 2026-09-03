@@ -1,0 +1,44 @@
+{% extends "dashboard/base.html" %}
+{% load i18n static %}
+
+{% block title %}{% trans "Log in" %}{% endblock %}
+
+{% block body %}
+<div class="db-login-wrap">
+  <button type="button" class="theme-toggle db-login-theme" data-theme-toggle
+          aria-label="{% trans 'Switch colour theme' %}"
+          title="{% trans 'Switch colour theme' %}">
+    <svg class="icon-sun" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="3.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.3 4.3l1.4 1.4M14.3 14.3l1.4 1.4M15.7 4.3l-1.4 1.4M5.7 14.3l-1.4 1.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    <svg class="icon-moon" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M16.4 12.6A6.5 6.5 0 1 1 7.4 3.6a5 5 0 0 0 9 9Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+  </button>
+  <form method="post" class="db-login-card" novalidate>
+    {% csrf_token %}
+    <div class="db-login-brand">
+      {% include "partials/logo.html" %}
+      <div>
+        <strong>Dessert Shop</strong>
+        <span>{% trans "Dashboard" %}</span>
+      </div>
+    </div>
+
+    <h1>{% trans "Welcome back" %}</h1>
+
+    {% if form.non_field_errors %}
+      <div class="db-msg error" role="alert">{{ form.non_field_errors }}</div>
+    {% endif %}
+
+    <div class="db-field">
+      <label for="{{ form.username.id_for_label }}">{% trans "Username" %}</label>
+      {{ form.username }}
+    </div>
+    <div class="db-field">
+      <label for="{{ form.password.id_for_label }}">{% trans "Password" %}</label>
+      {{ form.password }}
+    </div>
+
+    <input type="hidden" name="next" value="{{ next }}">
+    <button type="submit" class="db-btn db-btn-solid db-btn-block">{% trans "Log in" %}</button>
+    <a class="db-login-back" href="{% url 'menu:menu' %}">{% trans "← Back to the site" %}</a>
+  </form>
+</div>
+{% endblock %}

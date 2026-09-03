@@ -1,0 +1,27 @@
+{% extends "dashboard/base_auth.html" %}
+{% load i18n shop_tags %}
+
+{% block title %}{% trans "Delete product" %}{% endblock %}
+
+{% block content %}
+<header class="db-page-head">
+  <div>
+    <h1>{% trans "Delete product" %}</h1>
+  </div>
+</header>
+
+<div class="db-card db-confirm">
+  {% if product.image %}
+    <img class="db-confirm-thumb" src="{{ product.image.url }}" alt="" width="72" height="72">
+  {% endif %}
+  <p class="db-confirm-text">
+    {% blocktrans with name=product.display_name %}Are you sure you want to delete <strong>{{ name }}</strong>? This cannot be undone.{% endblocktrans %}
+  </p>
+  <p class="db-confirm-meta">{{ product.category.display_name }} · {{ product.price|price }}</p>
+  <form method="post" class="db-confirm-actions">
+    {% csrf_token %}
+    <button type="submit" class="db-btn db-btn-danger">{% trans "Yes, delete it" %}</button>
+    <a class="db-btn db-btn-ghost" href="{% url 'dashboard:products' %}">{% trans "Cancel" %}</a>
+  </form>
+</div>
+{% endblock %}

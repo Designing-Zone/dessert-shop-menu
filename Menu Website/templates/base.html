@@ -1,0 +1,91 @@
+{% load i18n static shop_tags %}<!doctype html>
+<html lang="{{ LANGUAGE_CODE }}" dir="{{ LANGUAGE_BIDI|yesno:'rtl,ltr' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Dessert Shop — {% trans "Baked fresh daily" %}{% endblock %}</title>
+  <meta name="description" content="{% block meta_description %}{% trans "Cakes, cheesecakes, cookies and kahk — baked from scratch every morning at Dessert Shop. Browse the menu and order on WhatsApp." %}{% endblock %}">
+  <meta name="theme-color" content="#f7f7f6">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Dessert Shop">
+  <meta property="og:title" content="{% block og_title %}Dessert Shop — {% trans "Baked fresh daily" %}{% endblock %}">
+  <meta property="og:description" content="{% block og_description %}{% trans "Cakes, cheesecakes, cookies and kahk — baked from scratch every morning at Dessert Shop. Browse the menu and order on WhatsApp." %}{% endblock %}">
+  {% if og_image_url %}<meta property="og:image" content="{{ og_image_url }}">{% endif %}
+  <meta property="og:locale" content="{% if LANGUAGE_CODE == 'ar' %}ar_AR{% else %}en_US{% endif %}">
+  <meta property="og:locale:alternate" content="{% if LANGUAGE_CODE == 'ar' %}en_US{% else %}ar_AR{% endif %}">
+
+  <link rel="alternate" hreflang="en" href="{% language_url 'en' %}">
+  <link rel="alternate" hreflang="ar" href="{% language_url 'ar' %}">
+  <link rel="alternate" hreflang="x-default" href="{% language_url 'en' %}">
+
+  <link rel="icon" type="image/svg+xml" href="{% static 'img/favicon.svg' %}">
+  <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
+  <link rel="stylesheet" href="{% static 'css/tokens.css' %}">
+  <link rel="stylesheet" href="{% static 'css/site.css' %}">
+  <script>(function(){try{var t=localStorage.getItem("dessert-shop-theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","light");}})();</script>
+</head>
+<body>
+<a class="skip-link" href="#menu-content">{% trans "Skip to the menu" %}</a>
+
+<header class="site-header" data-header>
+  <div class="container header-row">
+    <a class="brand" href="{% url 'menu:menu' %}" aria-label="Dessert Shop — {% trans 'home' %}">
+      {% include "partials/logo.html" %}
+      <span class="brand-name">Dessert&nbsp;Shop</span>
+    </a>
+
+    <nav class="site-nav" aria-label="{% trans 'Main navigation' %}">
+      <a href="#menu-content">{% trans "Menu" %}</a>
+      {% if featured_products %}<a href="#featured">{% trans "Featured" %}</a>{% endif %}
+      {% if has_contact_section %}<a href="#order">{% trans "Contact" %}</a>{% endif %}
+    </nav>
+
+    <div class="header-actions">
+      <button type="button" class="theme-toggle" data-theme-toggle
+              aria-label="{% trans 'Switch colour theme' %}"
+              title="{% trans 'Switch colour theme' %}">
+        <svg class="icon-sun" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="3.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.3 4.3l1.4 1.4M14.3 14.3l1.4 1.4M15.7 4.3l-1.4 1.4M5.7 14.3l-1.4 1.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <svg class="icon-moon" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M16.4 12.6A6.5 6.5 0 1 1 7.4 3.6a5 5 0 0 0 9 9Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      </button>
+      {% include "partials/lang_switch.html" %}
+      {% if whatsapp_url %}
+        <a class="btn btn-solid btn-sm wa-btn" href="{{ whatsapp_url }}" target="_blank" rel="noopener">
+          <svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2.4A9.6 9.6 0 0 0 3.7 16.8L2.4 21.6l4.9-1.3A9.6 9.6 0 1 0 12 2.4Zm0 17.5a7.9 7.9 0 0 1-4-1.1l-.3-.2-2.9.8.8-2.8-.2-.3a7.9 7.9 0 1 1 6.6 3.6Zm4.3-5.9c-.2-.1-1.4-.7-1.7-.8-.2 0-.4-.1-.5.2l-.7.8c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4 0-.5.2-.7l.4-.5c.1-.2.1-.3 0-.5L9.6 8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5 0-.7.3-.9.9-1.1 2.1-.2 3.6a12 12 0 0 0 4.6 4.2c1.7.7 2.4.7 3.2.6.5-.1 1.4-.6 1.6-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3Z"/></svg>
+          <span>{% trans "Order" %}</span>
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</header>
+
+<main>
+{% block content %}{% endblock %}
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-row">
+    <div class="footer-brand">
+      {% include "partials/logo.html" %}
+      <span class="brand-name">Dessert&nbsp;Shop</span>
+    </div>
+    <p class="footer-tag">{% trans "Baked fresh daily." %}</p>
+    <nav class="footer-nav" aria-label="{% trans 'Footer' %}">
+      <a href="#menu-content">{% trans "Menu" %}</a>
+      {% if has_contact_section %}<a href="#order">{% trans "Contact" %}</a>{% endif %}
+      {% include "partials/lang_switch.html" %}
+    </nav>
+    <p class="footer-copy">© {% now "Y" %} Dessert Shop</p>
+  </div>
+</footer>
+
+<script src="{% static 'js/theme.js' %}" defer></script>
+<script src="{% static 'js/menu.js' %}" defer></script>
+<button type="button" class="theme-float" data-theme-toggle
+        aria-label="{% trans 'Switch colour theme' %}"
+        title="{% trans 'Switch colour theme' %}">
+  <svg class="icon-sun" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="3.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.3 4.3l1.4 1.4M14.3 14.3l1.4 1.4M15.7 4.3l-1.4 1.4M5.7 14.3l-1.4 1.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+  <svg class="icon-moon" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M16.4 12.6A6.5 6.5 0 1 1 7.4 3.6a5 5 0 0 0 9 9Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+</button>
+</body>
+</html>

@@ -1,0 +1,546 @@
+# Arabic translations for the Dessert Shop website.
+msgid ""
+msgstr ""
+"Project-Id-Version: Dessert Shop\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-02 02:08+0000\n"
+"PO-Revision-Date: 2026-09-02 02:08+0000\n"
+"Last-Translator: \n"
+"Language-Team: Arabic\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100!=100 ? 4 : 5);\n"
+
+msgid "%(counter)s item"
+msgid_plural "%(counter)s items"
+msgstr[0] "لا أصناف"
+msgstr[1] "صنف واحد"
+msgstr[2] "صنفان"
+msgstr[3] "%(counter)s أصناف"
+msgstr[4] "%(counter)s صنفًا"
+msgstr[5] "%(counter)s صنف"
+
+msgid "A cake collapsed in the kitchen."
+msgstr "يبدو أن شيئًا ما احترق في المطبخ."
+
+msgid "A short, appetizing description."
+msgstr "وصف قصير وشهي."
+
+msgid "Actions"
+msgstr "الإجراءات"
+
+msgid "Add a category"
+msgstr "أضف قسمًا"
+
+msgid "Add a product"
+msgstr "أضف منتجًا"
+
+msgid "Add category"
+msgstr "إضافة قسم"
+
+msgid "Add product"
+msgstr "إضافة منتج"
+
+msgid "Address"
+msgstr "العنوان"
+
+msgid "Address (Arabic)"
+msgstr "العنوان (بالعربية)"
+
+msgid "Address (English)"
+msgstr "العنوان (بالإنجليزية)"
+
+msgid "All categories"
+msgstr "كل الأقسام"
+
+msgid "Are you sure you want to delete <strong>%(name)s</strong>? This cannot be undone."
+msgstr "هل أنت متأكد من حذف <strong>%(name)s</strong>؟ لا يمكن التراجع عن هذه الخطوة."
+
+msgid "Available"
+msgstr "متوفّر"
+
+msgid "Back to the menu"
+msgstr "العودة إلى القائمة"
+
+msgid "Baked daily"
+msgstr "يُخبَز يوميًا"
+
+msgid "Baked fresh daily"
+msgstr "يُخبَز طازجًا يوميًا"
+
+msgid "Baked fresh daily."
+msgstr "يُخبَز طازجًا يوميًا."
+
+msgid "Baked fresh every morning"
+msgstr "يُخبَز طازجًا كل صباح"
+
+msgid "Birthday cakes and event trays, made to order."
+msgstr "كيك أعياد الميلاد وصواني المناسبات، تُجهَّز حسب الطلب."
+
+msgid "Browse the full Dessert Shop menu: cakes, cupcakes, cookies, cheesecake, cinnamon rolls, kahk and more. Freshly baked every day — order on WhatsApp."
+msgstr "تصفّح قائمة ديسيرت شوب الكاملة: كيك وكب كيك وكوكيز وتشيز كيك ولفائف القرفة وكحك والمزيد. يُخبَز طازجًا كل يوم — اطلب عبر واتساب."
+
+msgid "Browse the menu"
+msgstr "تصفّح القائمة"
+
+msgid "Cakes, cheesecakes, cookies and kahk — baked from scratch every morning at Dessert Shop. Browse the menu and order on WhatsApp."
+msgstr "كيك وتشيز كيك وكوكيز وكحك — تُخبَز كل صباح من الصفر في ديسيرت شوب. تصفّح القائمة واطلب عبر واتساب."
+
+msgid "Cakes, cheesecakes, cookies and kahk — everything is baked from scratch in small batches and leaves the shop the same day."
+msgstr "كيك وتشيز كيك وكوكيز وكحك — كل شيء يُخبَز من الصفر بكميات صغيرة ويغادر المحل في اليوم نفسه."
+
+msgid "Call the shop"
+msgstr "اتصل بالمحل"
+
+msgid "Cancel"
+msgstr "إلغاء"
+
+msgid "Categories"
+msgstr "الأقسام"
+
+msgid "Category"
+msgstr "القسم"
+
+msgid "Category “%(name)s” was added."
+msgstr "تمت إضافة القسم «%(name)s»."
+
+msgid "Category “%(name)s” was deleted."
+msgstr "تم حذف القسم «%(name)s»."
+
+msgid "Category “%(name)s” was updated."
+msgstr "تم تحديث القسم «%(name)s»."
+
+msgid "Clear"
+msgstr "مسح"
+
+msgid "Contact"
+msgstr "تواصل معنا"
+
+msgid "Contact details shown on the website. Everything is optional."
+msgstr "بيانات التواصل التي تظهر على الموقع. كل الحقول اختيارية."
+
+msgid "Create your first category — for example Cakes or Cookies — and add products to it."
+msgstr "أنشئ أول قسم — مثل «كيك» أو «كوكيز» — ثم أضف إليه منتجات."
+
+msgid "Currently:"
+msgstr "الحالي:"
+
+msgid "Custom orders"
+msgstr "طلبات خاصة"
+
+msgid "Dashboard"
+msgstr "لوحة التحكم"
+
+msgid "Dashboard navigation"
+msgstr "تنقّل لوحة التحكم"
+
+msgid "Delete"
+msgstr "حذف"
+
+msgid "Delete category"
+msgstr "حذف قسم"
+
+msgid "Delete product"
+msgstr "حذف منتج"
+
+msgid "Description (Arabic)"
+msgstr "الوصف (بالعربية)"
+
+msgid "Description (English)"
+msgstr "الوصف (بالإنجليزية)"
+
+msgid "Digits only, including the country code (e.g. 201234567890)."
+msgstr "أرقام فقط مع رمز الدولة (مثال: 201234567890)."
+
+msgid "Edit"
+msgstr "تعديل"
+
+msgid "Edit category"
+msgstr "تعديل قسم"
+
+msgid "Edit product"
+msgstr "تعديل منتج"
+
+msgid "English"
+msgstr "الإنجليزية"
+
+msgid "Everything on the menu, in display order."
+msgstr "كل ما في القائمة، بترتيب العرض."
+
+msgid "Feature"
+msgstr "تمييز"
+
+msgid "Featured"
+msgstr "مميّز"
+
+msgid "Featured this week"
+msgstr "مميّز هذا الأسبوع"
+
+msgid "Filter"
+msgstr "تصفية"
+
+msgid "Filter by category"
+msgstr "تصفية حسب القسم"
+
+msgid "Footer"
+msgstr "تذييل الصفحة"
+
+msgid "From the oven"
+msgstr "من الفرن مباشرة"
+
+msgid "Good to see you"
+msgstr "سعيدٌ برؤيتك"
+
+msgid "Hello! I'd like to place an order."
+msgstr "مرحبًا! أودّ تقديم طلب."
+
+msgid "Here's what your menu looks like today."
+msgstr "هذه صورة قائمتك اليوم."
+
+msgid "Hidden"
+msgstr "مخفي"
+
+msgid "Hidden categories keep their products but disappear from the site."
+msgstr "الأقسام المخفية تحتفظ بمنتجاتها لكنها تختفي من الموقع."
+
+msgid "Hide from menu"
+msgstr "الإخفاء من القائمة"
+
+msgid "Hide on menu"
+msgstr "الإخفاء من القائمة"
+
+msgid "Hours"
+msgstr "مواعيد العمل"
+
+msgid "Instagram"
+msgstr "إنستغرام"
+
+msgid "JPG, PNG or WebP, up to %(max_mb)s MB. Large photos are resized automatically."
+msgstr "صيغ JPG أو PNG أو WebP حتى %(max_mb)s ميغابايت. تُصغَّر الصور الكبيرة تلقائيًا."
+
+msgid "Language"
+msgstr "اللغة"
+
+msgid "Log in"
+msgstr "تسجيل الدخول"
+
+msgid "Log out"
+msgstr "تسجيل الخروج"
+
+msgid "Main navigation"
+msgstr "التنقّل الرئيسي"
+
+msgid "Mark as available"
+msgstr "تعليمه: متوفّر"
+
+msgid "Mark as sold out"
+msgstr "تعليمه: نفدت الكمية"
+
+msgid "Menu"
+msgstr "القائمة"
+
+msgid "Menu categories"
+msgstr "أقسام القائمة"
+
+msgid "Message us on WhatsApp and we arrange the rest."
+msgstr "راسلنا على واتساب ونتولّى الباقي."
+
+msgid "Move down"
+msgstr "تأخير لأسفل"
+
+msgid "Move up"
+msgstr "تقديم لأعلى"
+
+msgid "Name (Arabic)"
+msgstr "الاسم (بالعربية)"
+
+msgid "Name (English)"
+msgstr "الاسم (بالإنجليزية)"
+
+msgid "New cakes, cookies and more."
+msgstr "كيك وكوكيز والمزيد."
+
+msgid "New items are coming to this section soon."
+msgstr "أصناف جديدة ستُضاف إلى هذا القسم قريبًا."
+
+msgid "Next"
+msgstr "التالي"
+
+msgid "No categories yet."
+msgstr "لا توجد أقسام بعد."
+
+msgid "No products found."
+msgstr "لا توجد منتجات مطابقة."
+
+msgid "No products yet. Add your first one to fill the menu."
+msgstr "لا توجد منتجات بعد. أضف أول منتج لتكتمل القائمة."
+
+msgid "Opening hours (Arabic)"
+msgstr "مواعيد العمل (بالعربية)"
+
+msgid "Opening hours (English)"
+msgstr "مواعيد العمل (بالإنجليزية)"
+
+msgid "Order"
+msgstr "اطلب"
+
+msgid "Order on WhatsApp"
+msgstr "اطلب عبر واتساب"
+
+msgid "Ordering"
+msgstr "الطلب"
+
+msgid "Organize the menu your way."
+msgstr "نظّم القائمة على طريقتك."
+
+msgid "Our menu is short on purpose. Fewer things, done properly — baked the same morning they leave the shop, with ingredients we would serve at our own table."
+msgstr "قائمتنا قصيرة عن قصد: أشياء أقل نُتقنها جيدًا — تُخبَز في الصباح نفسه الذي تغادر فيه المحل، بمكوّنات نضعها بكل ثقة على مائدتنا."
+
+msgid "Our promise"
+msgstr "وعدنا"
+
+msgid "Overview"
+msgstr "نظرة عامة"
+
+msgid "Page %(number)s of %(total)s"
+msgstr "صفحة %(number)s من %(total)s"
+
+msgid "Page not found"
+msgstr "الصفحة غير موجودة"
+
+msgid "Pagination"
+msgstr "تصفّح الصفحات"
+
+msgid "Password"
+msgstr "كلمة المرور"
+
+msgid "Phone"
+msgstr "الهاتف"
+
+msgid "Pickup & delivery"
+msgstr "استلام وتوصيل"
+
+msgid "Please enter a realistic price."
+msgstr "يرجى إدخال سعر منطقي."
+
+msgid "Please fix the highlighted fields below."
+msgstr "يرجى تصحيح الحقول المميّزة أدناه."
+
+msgid "Previous"
+msgstr "السابق"
+
+msgid "Price"
+msgstr "السعر"
+
+msgid "Product"
+msgstr "المنتج"
+
+msgid "Products"
+msgstr "المنتجات"
+
+msgid "Quick actions"
+msgstr "إجراءات سريعة"
+
+msgid "Real butter, real vanilla, no shortcuts."
+msgstr "زبدة حقيقية وفانيليا حقيقية وبلا اختصارات."
+
+msgid "Real ingredients"
+msgstr "مكوّنات حقيقية"
+
+msgid "Recent products"
+msgstr "أحدث المنتجات"
+
+msgid "Save changes"
+msgstr "حفظ التغييرات"
+
+msgid "Save settings"
+msgstr "حفظ الإعدادات"
+
+msgid "Save yourself a trip — just message us."
+msgstr "وفّر على نفسك الزحمة — راسلنا فقط."
+
+msgid "Search products"
+msgstr "البحث في المنتجات"
+
+msgid "Search products…"
+msgstr "ابحث في المنتجات…"
+
+msgid "Sections of your menu, in display order."
+msgstr "أقسام قائمتك، بترتيب العرض."
+
+msgid "Settings"
+msgstr "الإعدادات"
+
+msgid "Shop settings"
+msgstr "إعدادات المحل"
+
+msgid "Shop settings were saved."
+msgstr "تم حفظ إعدادات المحل."
+
+msgid "Show it in the featured strip on the homepage."
+msgstr "لإظهاره في شريط المميّزة بالصفحة الرئيسية."
+
+msgid "Show its products"
+msgstr "عرض منتجاته"
+
+msgid "Show on menu"
+msgstr "الإظهار في القائمة"
+
+msgid "Signature"
+msgstr "مختاراتنا"
+
+msgid "Skip to the menu"
+msgstr "الانتقال إلى القائمة"
+
+msgid "Small batches"
+msgstr "دفعات صغيرة"
+
+msgid "Small batches, straight from the oven — never day-old."
+msgstr "دفعات صغيرة من الفرن مباشرة — لا شيء متبقٍ من الأمس."
+
+msgid "Sold out"
+msgstr "نفدت الكمية"
+
+msgid "Something went wrong"
+msgstr "حدث خطأ ما"
+
+msgid "Something went wrong on our side. Please try again in a moment."
+msgstr "حدث خطأ من جهتنا. حاول مجددًا بعد قليل."
+
+msgid "Sort"
+msgstr "الترتيب"
+
+msgid "Status"
+msgstr "الحالة"
+
+msgid "Sweet things,<br>made properly."
+msgstr "حلويات،<br>بإتقانٍ حقيقي."
+
+msgid "Tell us what you're craving and we'll have it boxed, fresh and ready for pickup or delivery."
+msgstr "أخبرنا بما تشتهيه، وسنجده لك معبّأً طازجًا وجاهزًا للاستلام أو التوصيل."
+
+msgid "The image is too large. Please use a file under 5 MB."
+msgstr "الصورة كبيرة جدًا. يرجى استخدام ملف أصغر من 5 ميغابايت."
+
+msgid "The large photo in the homepage hero. Without one, your first featured product is used."
+msgstr "الصورة الكبيرة في مقدمة الصفحة الرئيسية. بدونها، يُستخدم أول منتج مميّز."
+
+msgid "The page you're looking for doesn't exist — but the menu certainly does."
+msgstr "الصفحة التي تبحث عنها غير موجودة — لكن القائمة موجودة بالتأكيد."
+
+msgid "This category still has products. Move or delete them first."
+msgstr "لا يزال هذا القسم يحتوي على منتجات. انقلها أو احذفها أولًا."
+
+msgid "This page is out of the oven."
+msgstr "يبدو أن هذه الصفحة اختفت من الفرن."
+
+msgid "Total products"
+msgstr "إجمالي المنتجات"
+
+msgid "Try a different search, or add your first product to the menu."
+msgstr "جرّب بحثًا مختلفًا، أو أضف أول منتج إلى القائمة."
+
+msgid "Uncheck to hide this product completely."
+msgstr "أزل التحديد لإخفاء هذا المنتج تمامًا."
+
+msgid "Uncheck to mark it as sold out on the menu."
+msgstr "أزل التحديد لتظهر في القائمة كنفدت الكمية."
+
+msgid "Unfeature"
+msgstr "إلغاء التمييز"
+
+msgid "Username"
+msgstr "اسم المستخدم"
+
+msgid "View all"
+msgstr "عرض الكل"
+
+msgid "View site"
+msgstr "عرض الموقع"
+
+msgid "Visibility"
+msgstr "الظهور"
+
+msgid "Visible"
+msgstr "ظاهر"
+
+msgid "Visible on menu"
+msgstr "ظاهر في القائمة"
+
+msgid "Visit us"
+msgstr "زورونا"
+
+msgid "Welcome back"
+msgstr "أهلًا بعودتك"
+
+msgid "WhatsApp number, hours and address."
+msgstr "رقم واتساب ومواعيد العمل والعنوان."
+
+msgid "Yes, delete it"
+msgstr "نعم، احذفه"
+
+msgid "added"
+msgstr "أُضيف في"
+
+msgid "e.g. Cakes"
+msgstr "مثال: كيك"
+
+msgid "e.g. Chocolate Fudge Cake"
+msgstr "مثال: كيكة الشوكولاتة"
+
+msgid "e.g. كيك"
+msgstr "مثال: كيك"
+
+msgid "e.g. كيكة الشوكولاتة"
+msgstr "مثال: كيكة الشوكولاتة"
+
+msgid "home"
+msgstr "الرئيسية"
+
+msgid "uploading a new file replaces it."
+msgstr "رفع ملف جديد سيستبدله."
+
+msgid "view image"
+msgstr "عرض الصورة"
+
+msgid "“%(name)s” is available again."
+msgstr "«%(name)s»: متوفّر مرة أخرى."
+
+msgid "“%(name)s” is no longer featured."
+msgstr "أُلغي تمييز «%(name)s»."
+
+msgid "“%(name)s” is now hidden from the menu."
+msgstr "تم إخفاء «%(name)s» من القائمة."
+
+msgid "“%(name)s” is now sold out."
+msgstr "«%(name)s»: نفدت الكمية الآن."
+
+msgid "“%(name)s” is visible on the menu again."
+msgstr "ظهر «%(name)s» في القائمة من جديد."
+
+msgid "“%(name)s” still contains <strong>%(counter)s product</strong>. It must be empty before it can be deleted."
+msgid_plural "“%(name)s” still contains <strong>%(counter)s products</strong>. It must be empty before it can be deleted."
+msgstr[0] "القسم «%(name)s» لا يحتوي على أي منتجات. يمكن حذفه الآن."
+msgstr[1] "لا يزال قسم «%(name)s» يحتوي على <strong>منتج واحد</strong>. يجب أن يفرغ قبل حذفه."
+msgstr[2] "لا يزال قسم «%(name)s» يحتوي على <strong>منتجين</strong>. يجب أن يفرغ قبل حذفه."
+msgstr[3] "لا يزال قسم «%(name)s» يحتوي على <strong>%(counter)s منتجات</strong>. يجب أن يفرغ قبل حذفه."
+msgstr[4] "لا يزال قسم «%(name)s» يحتوي على <strong>%(counter)s منتجًا</strong>. يجب أن يفرغ قبل حذفه."
+msgstr[5] "لا يزال قسم «%(name)s» يحتوي على <strong>%(counter)s منتج</strong>. يجب أن يفرغ قبل حذفه."
+
+msgid "“%(name)s” was added."
+msgstr "تمت إضافة «%(name)s»."
+
+msgid "“%(name)s” was deleted."
+msgstr "تم حذف «%(name)s»."
+
+msgid "“%(name)s” was marked as featured."
+msgstr "تم تمييز «%(name)s»."
+
+msgid "“%(name)s” was updated."
+msgstr "تم تحديث «%(name)s»."
+
+msgid "← Back to the site"
+msgstr "→ العودة إلى الموقع"

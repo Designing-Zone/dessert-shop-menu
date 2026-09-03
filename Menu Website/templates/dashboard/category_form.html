@@ -1,0 +1,64 @@
+{% extends "dashboard/base_auth.html" %}
+{% load i18n %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block content %}
+<header class="db-page-head">
+  <div>
+    <h1>{{ page_title }}</h1>
+  </div>
+</header>
+
+{% if form.errors %}
+<div class="db-msg error" role="alert">{% trans "Please fix the highlighted fields below." %}</div>
+{% endif %}
+
+<form method="post" class="db-form" novalidate>
+  {% csrf_token %}
+
+  <div class="db-card db-form-card">
+    <div class="db-lang-cols">
+      <section>
+        <h2 class="db-col-title">{% trans "English" %}</h2>
+        <div class="db-field">
+          <label for="{{ form.name_en.id_for_label }}">{{ form.name_en.label }}</label>
+          {{ form.name_en }}
+          {{ form.name_en.errors }}
+        </div>
+      </section>
+      <section>
+        <h2 class="db-col-title" dir="auto">العربية</h2>
+        <div class="db-field">
+          <label for="{{ form.name_ar.id_for_label }}">{{ form.name_ar.label }}</label>
+          {{ form.name_ar }}
+          {{ form.name_ar.errors }}
+        </div>
+      </section>
+    </div>
+
+    <div class="db-form-row3">
+      <div class="db-field">
+        <label for="{{ form.display_order.id_for_label }}">{{ form.display_order.label }}</label>
+        {{ form.display_order }}
+        {{ form.display_order.errors }}
+      </div>
+      <div class="db-field db-field-switch">
+        <span class="db-field-label">{{ form.is_active.label }}</span>
+        <label class="db-switch">
+          <input type="checkbox" id="{{ form.is_active.id_for_label }}" name="{{ form.is_active.name }}" {% if form.is_active.value %}checked{% endif %}>
+          <span class="db-track" aria-hidden="true"></span>
+          <span class="db-switch-text"><strong>{% trans "Visible on menu" %}</strong><em>{% trans "Hidden categories keep their products but disappear from the site." %}</em></span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="db-form-actions">
+    <button type="submit" class="db-btn db-btn-solid">
+      {% if is_new %}{% trans "Add category" %}{% else %}{% trans "Save changes" %}{% endif %}
+    </button>
+    <a class="db-btn db-btn-ghost" href="{% url 'dashboard:categories' %}">{% trans "Cancel" %}</a>
+  </div>
+</form>
+{% endblock %}

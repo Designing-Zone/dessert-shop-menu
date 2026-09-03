@@ -1,0 +1,113 @@
+{% extends "dashboard/base_auth.html" %}
+{% load i18n static shop_tags %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block content %}
+<header class="db-page-head">
+  <div>
+    <h1>{% if is_new %}{% trans "Add product" %}{% else %}{% trans "Edit product" %}{% endif %}</h1>
+    {% if not is_new %}
+      <p class="db-sub">{{ product.display_name }}{% if product.image %} · <a href="{{ product.image.url }}" target="_blank" rel="noopener">{% trans "view image" %}</a>{% endif %}</p>
+    {% endif %}
+  </div>
+</header>
+
+{% if form.errors and not form.non_field_errors %}
+<div class="db-msg error" role="alert">{% trans "Please fix the highlighted fields below." %}</div>
+{% endif %}
+
+<form method="post" class="db-form" enctype="multipart/form-data" novalidate>
+  {% csrf_token %}
+
+  <div class="db-card db-form-card">
+    <div class="db-lang-cols">
+      <section>
+        <h2 class="db-col-title">{% trans "English" %}</h2>
+        <div class="db-field">
+          <label for="{{ form.name_en.id_for_label }}">{{ form.name_en.label }}</label>
+          {{ form.name_en }}
+          {{ form.name_en.errors }}
+        </div>
+        <div class="db-field">
+          <label for="{{ form.description_en.id_for_label }}">{{ form.description_en.label }}</label>
+          {{ form.description_en }}
+          {{ form.description_en.errors }}
+        </div>
+      </section>
+      <section>
+        <h2 class="db-col-title" dir="auto">العربية</h2>
+        <div class="db-field">
+          <label for="{{ form.name_ar.id_for_label }}">{{ form.name_ar.label }}</label>
+          {{ form.name_ar }}
+          {{ form.name_ar.errors }}
+        </div>
+        <div class="db-field">
+          <label for="{{ form.description_ar.id_for_label }}">{{ form.description_ar.label }}</label>
+          {{ form.description_ar }}
+          {{ form.description_ar.errors }}
+        </div>
+      </section>
+    </div>
+
+    <div class="db-form-row3">
+      <div class="db-field">
+        <label for="{{ form.category.id_for_label }}">{{ form.category.label }}</label>
+        {{ form.category }}
+        {{ form.category.errors }}
+      </div>
+      <div class="db-field">
+        <label for="{{ form.price.id_for_label }}">{{ form.price.label }} <small>(EGP)</small></label>
+        {{ form.price }}
+        {{ form.price.errors }}
+      </div>
+      <div class="db-field">
+        <label for="{{ form.display_order.id_for_label }}">{{ form.display_order.label }}</label>
+        {{ form.display_order }}
+        {{ form.display_order.errors }}
+      </div>
+    </div>
+
+    <div class="db-form-row2">
+      <div class="db-field">
+        <label for="{{ form.image.id_for_label }}">{{ form.image.label }}</label>
+        {{ form.image }}
+        {{ form.image.errors }}
+        {% if form.instance.image %}
+          <p class="db-help">{% trans "Currently:" %} <a href="{{ form.instance.image.url }}" target="_blank" rel="noopener">{{ form.instance.image.name|cut:"products/" }}</a> — {% trans "uploading a new file replaces it." %}</p>
+        {% endif %}
+        <p class="db-help">{% blocktrans with max_mb=MAX_UPLOAD_SIZE_MB %}JPG, PNG or WebP, up to {{ max_mb }} MB. Large photos are resized automatically.{% endblocktrans %}</p>
+        <img class="db-image-preview" id="image-preview" alt="" hidden>
+      </div>
+      <fieldset class="db-switches">
+        <legend class="visually-hidden">{% trans "Visibility" %}</legend>
+        <label class="db-switch">
+          <input type="checkbox" id="{{ form.is_available.id_for_label }}" name="{{ form.is_available.name }}" {% if form.is_available.value %}checked{% endif %}>
+          <span class="db-track" aria-hidden="true"></span>
+          <span class="db-switch-text"><strong>{{ form.is_available.label }}</strong><em>{% trans "Uncheck to mark it as sold out on the menu." %}</em></span>
+        </label>
+        <label class="db-switch">
+          <input type="checkbox" id="{{ form.is_published.id_for_label }}" name="{{ form.is_published.name }}" {% if form.is_published.value %}checked{% endif %}>
+          <span class="db-track" aria-hidden="true"></span>
+          <span class="db-switch-text"><strong>{% trans "Visible on menu" %}</strong><em>{% trans "Uncheck to hide this product completely." %}</em></span>
+        </label>
+        <label class="db-switch">
+          <input type="checkbox" id="{{ form.is_featured.id_for_label }}" name="{{ form.is_featured.name }}" {% if form.is_featured.value %}checked{% endif %}>
+          <span class="db-track" aria-hidden="true"></span>
+          <span class="db-switch-text"><strong>{% trans "Featured" %}</strong><em>{% trans "Show it in the featured strip on the homepage." %}</em></span>
+        </label>
+        {{ form.is_available.errors }}
+        {{ form.is_published.errors }}
+        {{ form.is_featured.errors }}
+      </fieldset>
+    </div>
+  </div>
+
+  <div class="db-form-actions">
+    <button type="submit" class="db-btn db-btn-solid">
+      {% if is_new %}{% trans "Add product" %}{% else %}{% trans "Save changes" %}{% endif %}
+    </button>
+    <a class="db-btn db-btn-ghost" href="{% url 'dashboard:products' %}">{% trans "Cancel" %}</a>
+  </div>
+</form>
+{% endblock %}

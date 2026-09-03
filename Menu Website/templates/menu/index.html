@@ -1,0 +1,203 @@
+{% extends "base.html" %}
+{% load i18n static shop_tags %}
+
+{% block title %}Dessert Shop — {% trans "Menu" %}{% endblock %}
+{% block meta_description %}{% trans "Browse the full Dessert Shop menu: cakes, cupcakes, cookies, cheesecake, cinnamon rolls, kahk and more. Freshly baked every day — order on WhatsApp." %}{% endblock %}
+
+{% block content %}
+
+{# ---------------------------------------------------------------- hero #}
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="micro">{% trans "Baked fresh every morning" %}</p>
+      <h1>{% trans "Sweet things,<br>made properly." %}</h1>
+      <p class="lede">{% trans "Cakes, cheesecakes, cookies and kahk — everything is baked from scratch in small batches and leaves the shop the same day." %}</p>
+      <div class="cta-row">
+        <a class="btn btn-solid" href="#menu-content">{% trans "Browse the menu" %}</a>
+        {% if whatsapp_url %}
+          <a class="btn btn-ghost" href="{{ whatsapp_url }}" target="_blank" rel="noopener">{% trans "Order on WhatsApp" %}</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ------------------------------------------------------- category strip #}
+{% if menu_categories %}
+<div class="ticker" aria-hidden="true">
+  <div class="container ticker-row">
+    {% for c in menu_categories %}<span>{{ c.display_name }}</span><i>·</i>{% endfor %}
+  </div>
+</div>
+{% endif %}
+
+{# ------------------------------------------------------------- featured #}
+{% if featured_products %}
+<section class="featured" id="featured">
+  <div class="container">
+    <header class="section-head">
+      <p class="micro">{% trans "Signature" %}</p>
+      <h2>{% trans "Featured this week" %}</h2>
+    </header>
+    <div class="featured-grid" data-featured>
+      {% for p in featured_products %}
+      <article class="feat-item">
+        <div class="feat-media">
+          <a href="#cat-{{ p.category.slug }}" aria-label="{{ p.display_name }}">
+            {% if p.image %}
+              <img src="{{ p.image.url }}" alt="{{ p.display_name }}" loading="lazy" decoding="async" width="800" height="600">
+            {% else %}
+              <div class="media-ph">{% include "partials/logo.html" %}</div>
+            {% endif %}
+          </a>
+          <span class="price-badge price-badge-top">{{ p.price|price }}</span>
+        </div>
+        {% whatsapp_product_url p.display_name as p_order_url %}
+        <div class="product-line">
+          <h3 class="product-name">{{ p.display_name }}</h3>
+          {% if p_order_url and p.is_available %}
+          <a class="btn btn-solid btn-xs order-btn" href="{{ p_order_url }}" target="_blank" rel="noopener">
+            <svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2.4A9.6 9.6 0 0 0 3.7 16.8L2.4 21.6l4.9-1.3A9.6 9.6 0 1 0 12 2.4Zm0 17.5a7.9 7.9 0 0 1-4-1.1l-.3-.2-2.9.8.8-2.8-.2-.3a7.9 7.9 0 1 1 6.6 3.6Zm4.3-5.9c-.2-.1-1.4-.7-1.7-.8-.2 0-.4-.1-.5.2l-.7.8c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4 0-.5.2-.7l.4-.5c.1-.2.1-.3 0-.5L9.6 8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5 0-.7.3-.9.9-1.1 2.1-.2 3.6a12 12 0 0 0 4.6 4.2c1.7.7 2.4.7 3.2.6.5-.1 1.4-.6 1.6-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3Z"/></svg>
+            {% trans "Order" %}
+          </a>
+          {% endif %}
+        </div>
+        {% if p.display_description %}<p class="product-desc">{{ p.display_description }}</p>{% endif %}
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{# ----------------------------------------------------------------- menu #}
+<section class="menu" id="menu-content">
+  <nav class="cat-bar" aria-label="{% trans 'Menu categories' %}">
+    <div class="container cat-row">
+      {% for c in menu_categories %}
+        <a class="cat-link" href="#cat-{{ c.slug }}" data-spy>{{ c.display_name }}</a>
+      {% endfor %}
+    </div>
+  </nav>
+
+  <div class="container menu-body">
+    {% for c in menu_categories %}
+    <section class="menu-section" id="cat-{{ c.slug }}" aria-labelledby="cat-{{ c.slug }}-title">
+      <header class="cat-head">
+        <span class="cat-index" aria-hidden="true">{{ forloop.counter|stringformat:"02d" }}</span>
+        <h2 id="cat-{{ c.slug }}-title">{{ c.display_name }}</h2>
+        <span class="cat-count">
+          {% if c.products|length %}
+            {% blocktrans count counter=c.products|length %}{{ counter }} item{% plural %}{{ counter }} items{% endblocktrans %}
+          {% endif %}
+        </span>
+        <span class="rule" aria-hidden="true"></span>
+      </header>
+
+      {% if c.products %}
+      <div class="product-grid">
+        {% for p in c.products %}
+        <article class="product{% if not p.is_available %} is-out{% endif %}">
+          <div class="product-media">
+            {% if p.image %}
+              <img src="{{ p.image.url }}" alt="{{ p.display_name }}" loading="lazy" decoding="async" width="800" height="600">
+            {% else %}
+              <div class="media-ph">{% include "partials/logo.html" %}</div>
+            {% endif %}
+            <span class="price-badge price-badge-top">{{ p.price|price }}</span>
+            {% if not p.is_available %}<span class="tag-soldout">{% trans "Sold out" %}</span>{% endif %}
+          </div>
+          {% whatsapp_product_url p.display_name as p_order_url %}
+          <div class="product-line">
+            <h3 class="product-name">{{ p.display_name }}</h3>
+            {% if p_order_url and p.is_available %}
+            <a class="btn btn-solid btn-xs order-btn" href="{{ p_order_url }}" target="_blank" rel="noopener">
+              <svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2.4A9.6 9.6 0 0 0 3.7 16.8L2.4 21.6l4.9-1.3A9.6 9.6 0 1 0 12 2.4Zm0 17.5a7.9 7.9 0 0 1-4-1.1l-.3-.2-2.9.8.8-2.8-.2-.3a7.9 7.9 0 1 1 6.6 3.6Zm4.3-5.9c-.2-.1-1.4-.7-1.7-.8-.2 0-.4-.1-.5.2l-.7.8c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4 0-.5.2-.7l.4-.5c.1-.2.1-.3 0-.5L9.6 8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5 0-.7.3-.9.9-1.1 2.1-.2 3.6a12 12 0 0 0 4.6 4.2c1.7.7 2.4.7 3.2.6.5-.1 1.4-.6 1.6-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3Z"/></svg>
+              {% trans "Order" %}
+            </a>
+            {% endif %}
+          </div>
+          {% if p.display_description %}<p class="product-desc">{{ p.display_description }}</p>{% endif %}
+        </article>
+        {% endfor %}
+      </div>
+      {% else %}
+      <p class="menu-empty">{% trans "New items are coming to this section soon." %}</p>
+      {% endif %}
+    </section>
+    {% endfor %}
+  </div>
+</section>
+
+{# ---------------------------------------------------------------- about #}
+<section class="about">
+  <div class="container about-grid">
+    <div class="about-copy">
+      <p class="micro">{% trans "Our promise" %}</p>
+      <h2>{% trans "Real butter, real vanilla, no shortcuts." %}</h2>
+      <p>{% trans "Our menu is short on purpose. Fewer things, done properly — baked the same morning they leave the shop, with ingredients we would serve at our own table." %}</p>
+    </div>
+    <ul class="about-points">
+      <li>
+        <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M10 3v2M4.2 5.2 5.6 6.6M15.8 5.2 14.4 6.6M3 11h2M15 11h2M2.5 15h15M6 15a4 4 0 0 1 8 0" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <div>
+          <h3>{% trans "Baked daily" %}</h3>
+          <p>{% trans "Small batches, straight from the oven — never day-old." %}</p>
+        </div>
+      </li>
+      <li>
+        <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M6 2.8h8a1 1 0 0 1 1 1v12.4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3.8a1 1 0 0 1 1-1ZM7.5 8.5 10 6l2.5 2.5M10 6v6M8 13.4h4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div>
+          <h3>{% trans "Custom orders" %}</h3>
+          <p>{% trans "Birthday cakes and event trays, made to order." %}</p>
+        </div>
+      </li>
+      <li>
+        <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M10 2.8a6.4 6.4 0 0 0-5.4 9.8L3.5 16l3.5-.9A6.4 6.4 0 1 0 10 2.8Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.4 7.6h5.2M7.4 10.2h3.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <div>
+          <h3>{% trans "Pickup & delivery" %}</h3>
+          <p>{% trans "Message us on WhatsApp and we arrange the rest." %}</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+{# ---------------------------------------------------------------- order #}
+{% if has_contact_section %}
+<section class="order" id="order">
+  <div class="container order-grid">
+    <div class="order-copy">
+      <p class="micro">{% trans "Ordering" %}</p>
+      <h2>{% trans "Save yourself a trip — just message us." %}</h2>
+      <p>{% trans "Tell us what you're craving and we'll have it boxed, fresh and ready for pickup or delivery." %}</p>
+      <div class="cta-row">
+        {% if whatsapp_url %}
+          <a class="btn btn-solid" href="{{ whatsapp_url }}" target="_blank" rel="noopener">{% trans "Order on WhatsApp" %}</a>
+        {% endif %}
+        {% if shop_settings.phone %}
+          <a class="btn btn-ghost" href="tel:{{ shop_settings.phone }}">{% trans "Call the shop" %}</a>
+        {% endif %}
+      </div>
+    </div>
+
+    <dl class="order-details">
+      {% if shop_settings.address %}
+      <div class="detail-row"><dt>{% trans "Address" %}</dt><dd>{{ shop_settings.address }}</dd></div>
+      {% endif %}
+      {% if shop_settings.hours %}
+      <div class="detail-row"><dt>{% trans "Hours" %}</dt><dd>{{ shop_settings.hours }}</dd></div>
+      {% endif %}
+      {% if shop_settings.phone %}
+      <div class="detail-row"><dt>{% trans "Phone" %}</dt><dd><a href="tel:{{ shop_settings.phone }}">{{ shop_settings.phone }}</a></dd></div>
+      {% endif %}
+      {% if shop_settings.instagram_url %}
+      <div class="detail-row"><dt>{% trans "Instagram" %}</dt><dd><a href="{{ shop_settings.instagram_url }}" target="_blank" rel="noopener">{{ shop_settings.instagram_url|cut:"https://"|cut:"http://"|cut:"www." }}</a></dd></div>
+      {% endif %}
+    </dl>
+  </div>
+</section>
+{% endif %}
+
+{% endblock %}

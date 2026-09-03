@@ -1,0 +1,31 @@
+{% extends "dashboard/base_auth.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Delete category" %}{% endblock %}
+
+{% block content %}
+<header class="db-page-head">
+  <div>
+    <h1>{% trans "Delete category" %}</h1>
+  </div>
+</header>
+
+<div class="db-card db-confirm">
+  <p class="db-confirm-text">
+    {% blocktrans with name=category.display_name count counter=product_count %}
+      “{{ name }}” still contains <strong>{{ counter }} product</strong>. It must be empty before it can be deleted.
+    {% plural %}
+      “{{ name }}” still contains <strong>{{ counter }} products</strong>. It must be empty before it can be deleted.
+    {% endblocktrans %}
+  </p>
+  <form method="post" class="db-confirm-actions">
+    {% csrf_token %}
+    {% if product_count == 0 %}
+      <button type="submit" class="db-btn db-btn-danger">{% trans "Yes, delete it" %}</button>
+    {% else %}
+      <a class="db-btn db-btn-ghost" href="{% url 'dashboard:products' %}?category={{ category.pk }}">{% trans "Show its products" %}</a>
+    {% endif %}
+    <a class="db-btn db-btn-ghost" href="{% url 'dashboard:categories' %}">{% trans "Cancel" %}</a>
+  </form>
+</div>
+{% endblock %}

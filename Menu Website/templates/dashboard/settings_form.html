@@ -1,0 +1,87 @@
+{% extends "dashboard/base_auth.html" %}
+{% load i18n static %}
+
+{% block title %}{% trans "Shop settings" %}{% endblock %}
+
+{% block content %}
+<header class="db-page-head">
+  <div>
+    <h1>{% trans "Shop settings" %}</h1>
+    <p class="db-sub">{% trans "Contact details shown on the website. Everything is optional." %}</p>
+  </div>
+</header>
+
+{% if form.errors %}
+<div class="db-msg error" role="alert">{% trans "Please fix the highlighted fields below." %}</div>
+{% endif %}
+
+<form method="post" class="db-form" enctype="multipart/form-data" novalidate>
+  {% csrf_token %}
+
+  <div class="db-card db-form-card">
+    <h2 class="db-col-title">{% trans "Ordering" %}</h2>
+    <div class="db-form-row2">
+      <div class="db-field">
+        <label for="{{ form.whatsapp_number.id_for_label }}">{{ form.whatsapp_number.label }}</label>
+        {{ form.whatsapp_number }}
+        {{ form.whatsapp_number.errors }}
+        <p class="db-help">{{ form.whatsapp_number.help_text }}</p>
+      </div>
+      <div class="db-field">
+        <label for="{{ form.phone.id_for_label }}">{{ form.phone.label }}</label>
+        {{ form.phone }}
+        {{ form.phone.errors }}
+      </div>
+    </div>
+
+    <h2 class="db-col-title">{% trans "Visit us" %}</h2>
+    <div class="db-lang-cols">
+      <section>
+        <div class="db-field">
+          <label for="{{ form.address_en.id_for_label }}">{{ form.address_en.label }}</label>
+          {{ form.address_en }}
+          {{ form.address_en.errors }}
+        </div>
+        <div class="db-field">
+          <label for="{{ form.hours_en.id_for_label }}">{{ form.hours_en.label }}</label>
+          {{ form.hours_en }}
+          {{ form.hours_en.errors }}
+        </div>
+      </section>
+      <section>
+        <div class="db-field">
+          <label for="{{ form.address_ar.id_for_label }}">{{ form.address_ar.label }}</label>
+          {{ form.address_ar }}
+          {{ form.address_ar.errors }}
+        </div>
+        <div class="db-field">
+          <label for="{{ form.hours_ar.id_for_label }}">{{ form.hours_ar.label }}</label>
+          {{ form.hours_ar }}
+          {{ form.hours_ar.errors }}
+        </div>
+      </section>
+    </div>
+    <div class="db-form-row2">
+      <div class="db-field">
+        <label for="{{ form.instagram_url.id_for_label }}">{{ form.instagram_url.label }}</label>
+        {{ form.instagram_url }}
+        {{ form.instagram_url.errors }}
+      </div>
+      <div class="db-field">
+        <label for="{{ form.hero_image.id_for_label }}">{{ form.hero_image.label }}</label>
+        {{ form.hero_image }}
+        {{ form.hero_image.errors }}
+        {% if form.instance.hero_image %}
+          <p class="db-help">{% trans "Currently:" %} <a href="{{ form.instance.hero_image.url }}" target="_blank" rel="noopener">{{ form.instance.hero_image.name }}</a></p>
+        {% endif %}
+        <p class="db-help">{% trans "The large photo in the homepage hero. Without one, your first featured product is used." %}</p>
+        <img class="db-image-preview" id="image-preview" alt="" hidden>
+      </div>
+    </div>
+  </div>
+
+  <div class="db-form-actions">
+    <button type="submit" class="db-btn db-btn-solid">{% trans "Save settings" %}</button>
+  </div>
+</form>
+{% endblock %}

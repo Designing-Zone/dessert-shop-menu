@@ -1,0 +1,73 @@
+{% extends "dashboard/base_auth.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Overview" %}{% endblock %}
+
+{% block content %}
+<header class="db-page-head">
+  <div>
+    <h1>{% trans "Good to see you" %}, {{ user.get_username }}.</h1>
+    <p class="db-sub">{% trans "Here's what your menu looks like today." %}</p>
+  </div>
+  <div class="db-head-actions">
+    <a class="db-btn db-btn-solid" href="{% url 'dashboard:product_add' %}">+ {% trans "Add product" %}</a>
+  </div>
+</header>
+
+<ul class="db-stats">
+  <li><strong>{{ stats.total_products }}</strong><span>{% trans "Total products" %}</span></li>
+  <li><strong>{{ stats.available_products }}</strong><span>{% trans "Available" %}</span></li>
+  <li><strong>{{ stats.hidden_products }}</strong><span>{% trans "Hidden" %}</span></li>
+  <li><strong>{{ stats.total_categories }}</strong><span>{% trans "Categories" %}</span></li>
+  <li><strong>{{ stats.featured_products }}</strong><span>{% trans "Featured" %}</span></li>
+</ul>
+
+<div class="db-two-col">
+  <section class="db-card">
+    <header class="db-card-head">
+      <h2>{% trans "Recent products" %}</h2>
+      <a class="db-card-link" href="{% url 'dashboard:products' %}">{% trans "View all" %}</a>
+    </header>
+    {% if recent_products %}
+    <ul class="db-recent">
+      {% for p in recent_products %}
+      <li>
+        {% if p.image %}
+          <img src="{{ p.image.url }}" alt="" width="44" height="44" loading="lazy">
+        {% else %}
+          <span class="db-thumb-ph" aria-hidden="true">•</span>
+        {% endif %}
+        <div class="db-recent-body">
+          <strong>{{ p.display_name }}</strong>
+          <span>{{ p.category.display_name }} · {% trans "added" %} {{ p.created_at|date:"d M" }}</span>
+        </div>
+        <a class="db-mini-link" href="{% url 'dashboard:product_edit' p.pk %}">{% trans "Edit" %}</a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p class="db-empty">{% trans "No products yet. Add your first one to fill the menu." %}</p>
+    {% endif %}
+  </section>
+
+  <section class="db-card">
+    <header class="db-card-head">
+      <h2>{% trans "Quick actions" %}</h2>
+    </header>
+    <div class="db-quick">
+      <a class="db-quick-item" href="{% url 'dashboard:product_add' %}">
+        <strong>{% trans "Add a product" %}</strong>
+        <span>{% trans "New cakes, cookies and more." %}</span>
+      </a>
+      <a class="db-quick-item" href="{% url 'dashboard:category_add' %}">
+        <strong>{% trans "Add a category" %}</strong>
+        <span>{% trans "Organize the menu your way." %}</span>
+      </a>
+      <a class="db-quick-item" href="{% url 'dashboard:settings' %}">
+        <strong>{% trans "Shop settings" %}</strong>
+        <span>{% trans "WhatsApp number, hours and address." %}</span>
+      </a>
+    </div>
+  </section>
+</div>
+{% endblock %}

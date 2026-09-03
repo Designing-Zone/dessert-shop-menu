@@ -1,0 +1,13 @@
+{% load i18n %}
+<form class="lang-switch" action="{% url 'set_language' %}" method="post" aria-label="{% trans 'Language' %}">
+  {% csrf_token %}
+  <input type="hidden" name="next" value="{{ request.path }}">
+  <button type="submit" name="language" value="en"
+          class="{% if LANGUAGE_CODE == 'en' %}is-on{% endif %}"
+          aria-pressed="{% if LANGUAGE_CODE == 'en' %}true{% else %}false{% endif %}"
+          title="English">EN</button>
+  <button type="submit" name="language" value="ar"
+          class="{% if LANGUAGE_CODE == 'ar' %}is-on{% endif %}"
+          aria-pressed="{% if LANGUAGE_CODE == 'ar' %}true{% else %}false{% endif %}"
+          title="العربية">ع</button>
+</form>
